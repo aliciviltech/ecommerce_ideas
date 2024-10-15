@@ -1,0 +1,25 @@
+.Cart{
+    width: 45px;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.Cart .cartIcon{
+    width: 25px;
+    color: black;
+    font-size: 25px;
+}
+.Cart .itemsInCart{
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 20px;
+    font-size: 12px;
+}

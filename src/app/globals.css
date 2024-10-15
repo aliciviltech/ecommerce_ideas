@@ -1,27 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+    --primaryColor: #fff;
+    --secondaryColor: #BDBE3E;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  "Poppins", sans-serif;
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.headingH1{
+    font-size: 40px;
+    font-weight: bold;
+    width: fit-content;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    margin-bottom: 20px;
+    color: var(--secondaryColor);
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.headingH2{
+    font-size: 30px;
+    font-weight: normal;
+    width: fit-content;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #ccc;
+    padding: 0 30px;
+    margin-bottom: 20px;
+}
+.headingH3{
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+    width: fit-content;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    margin-bottom: 20px;
+}
+.paragraphP1{
+    font-size: 20px;
+    color: #fff;
+}
+.paragraphP3{
+    font-size: 16px;
 }

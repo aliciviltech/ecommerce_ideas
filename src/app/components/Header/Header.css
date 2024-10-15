@@ -1,0 +1,82 @@
+.Header{
+    /* width: 95%; */
+    margin: 0 auto;
+    /* height: 60px; */
+    padding:  20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* box-shadow: 0 0 4px gray;  */
+    color:#fff;
+    font-weight: 300;
+    transition: 0.3s;
+    background: linear-gradient(to top, transparent, #00000082);
+}
+.Header:hover{
+    background-color: #000;
+    transition: 0.3s;
+}
+.Header .row1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+.Header .row1 .logo img{
+    width: 170px;
+}
+
+.Header .row1 .nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+.Header .row1 .nav ul li{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+.Header .row1 .nav ul .icon{
+    font-size: 22px;
+    margin-right: 2px;
+}
+.Header .row1 .userSide{
+    display: flex; 
+    gap: 20px;
+    align-items: center;
+    font-size: 22px;
+}
+.Header .row1 .userSide .userImage{
+    background-color: rgb(115, 115, 2);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header .row1 .userSide select{
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 16px;
+}
+.Header .row1 select option{
+    background-color: transparent;
+    color: #000;
+}
+.Header .row2{
+    display: flex;
+    justify-content: space-between;
+}
+.Header .row2 .storeLocation .icon{
+    font-size: 25px;
+}
+.Header .row2 .nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 50px;
+}
+.Header .row2 .nav ul li{
+    cursor: pointer;
+}

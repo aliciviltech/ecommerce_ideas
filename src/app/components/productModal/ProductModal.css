@@ -1,0 +1,107 @@
+.productModalContainer{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.ProductModal{
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    border: 1px solid #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.ProductModal .image {
+    width: 330px;
+}
+.ProductModal .image img{
+    width: 100%;
+    height: 100%;
+}
+.ProductModal .suitDetails{
+    width: 400px ;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.ProductModal .suitDetails .suitTitle{
+    font-size: 30px;
+}
+.ProductModal .suitDetails .suitPrice{
+    font-size: 20px;
+}
+.ProductModal .suitDetails .suitPrice .oldPrice{
+    position: relative;
+}
+.ProductModal .suitDetails .suitPrice .oldPrice::after{
+    content: '';
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background-color: red;
+    height: 2px;
+    transform: rotate(5deg);
+    transform-origin: top left;
+}
+.ProductModal .suitDetails .cartContainer{
+    display: flex;
+    gap: 20px;
+}
+.ProductModal .suitDetails button{
+    width: 200px;
+    height: 40px;
+    background-color: var(--secondaryColor);
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.ProductModal .suitDetails button .icon{
+    color: #000;
+    margin-left: 10px;
+}
+.productModalContainer .cartAlert{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid orange;
+}
+.productModalContainer .cartAlert img{
+    width: 300px;
+}
+.productModalContainer .colors {
+    display: flex;
+    gap: 10px;
+}
+.productModalContainer .colors span{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.ProductModal .closeBtn{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+.ProductModal .closeBtn img{
+    width: 20px;
+}

@@ -1,0 +1,42 @@
+.Home .allProductsContainer{
+    /* width: 90%; */
+   
+}
+.Home .headerContainer{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.Home .centeralBody{
+    width: 100%;
+    display: flex;
+}
+.Home .centeralBody .allProductsContainer{
+    width: 80%;
+}
+.Home .centeralBody .allProductsContainer .allProducts{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    row-gap: 50px;
+
+}
+.Home .centeralBody .bestSellerContainer{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-left: 4px solid #ccc;
+}
+.Home .allProductsHeading{
+    
+}
+.Home .bestSellerHeading{
+    align-self: flex-start;
+}

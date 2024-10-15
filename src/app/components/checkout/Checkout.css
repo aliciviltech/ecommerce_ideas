@@ -1,0 +1,14 @@
+.Checkout .item .image{
+    width: 200px;    
+    overflow: hidden;
+}
+.Checkout .item .image img{
+    width: 100%;
+}
+.Checkout .headerContainer{
+    background-color: #000;
+}
+.Checkout .emptyCart{
+    text-align: center;
+    color: #757575;
+}

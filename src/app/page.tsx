@@ -1,101 +1,118 @@
-import Image from "next/image";
+"use client";
+import './page.css'
+import { menSuit } from '@/utils/ProductsData';
+import { menSuitType } from '@/utils/ProductsData';
+import { useDebugValue, useEffect, useRef, useState } from 'react';
+import BestSeller from './components/BestSeller/BestSeller';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import Card from './components/Card/Card';
+import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from './firebase/firebaseConfig'
+import { db, addDoc, collection, getDocs } from './firebase/firebaseConfig'
 
-export default function Home() {
+const Home = () => {
+  interface userData {
+    email: string | null;
+  }
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const [itemsInCart, setItemsInCart] = useState<any>([]);
+  const [isUser, setIsUser] = useState(false);
+  const [userUID, setUserUID] = useState('');
+  const [userData, setUserData] = useState<any | null>(null);
+
+
+  // const handelHeaderPosition = () => {
+  //   if (headerRef.current) {
+  //     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+  //       headerRef.current.style.position = 'fixed';
+  //       headerRef.current.style.top = '0';
+  //       headerRef.current.style.backgroundColor = '#000';
+
+  //     } else {
+  //       headerRef.current.style.position = 'absolute';
+  //       headerRef.current.style.backgroundColor = 'unset';
+  //     }
+  //   }
+  // }
+  // window.addEventListener('scroll', handelHeaderPosition);
+
+
+
+  // ========================== firebase =============================
+
+  // ------------- authentication - check state -----------
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        setUserData({email: user.email})
+        setIsUser(true)
+        // ...
+      } else {
+        setIsUser(false);
+      }
+    });
+  }, [])
+
+
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="Home">
+
+      {/* Header */}
+      <div ref={headerRef} className="headerContainer">
+        <Header itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} isUser={isUser} userData={userData} />
+      </div>
+
+      {/* Hero */}
+      <Hero />
+
+      {/* Category - new Arrival */}
+      <BestSeller itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} />
+
+
+      {/* ================== central body ==================== */}
+
+      <section className="centeralBody">
+
+        {/* All Products */}
+        <div className="allProductsContainer">
+
+          <h1 className='allProductsHeading headingH2'>All Products</h1>
+          <div className="allProducts">
+            {
+              menSuit.map((suit: menSuitType) => {
+                return <Card key={suit.id} suit={suit} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} cardSize={'normal'} />
+              })
+            }
+            {
+              menSuit.map((suit: menSuitType) => {
+                return <Card key={suit.id} suit={suit} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} cardSize={'normal'} />
+              })
+            }
+            {
+              menSuit.map((suit: menSuitType) => {
+                return <Card key={suit.id} suit={suit} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} cardSize={'normal'} />
+              })
+            }
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Best Seller */}
+        <div className="bestSellerContainer">
+          <h1 className='bestSellerHeading headingH2'>Best Seller</h1>
+          {
+            menSuit.map((suit: menSuitType) => {
+              return <Card key={suit.id} suit={suit} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} cardSize={'small'} />
+            })
+          }
+        </div>
+      </section>
     </div>
-  );
+  )
 }
+
+export default Home

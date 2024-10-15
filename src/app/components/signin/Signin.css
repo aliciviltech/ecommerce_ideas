@@ -1,0 +1,93 @@
+.Signin{
+    height: 100vh;
+    display: flex;
+
+}
+.formSide{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.formSide .logo{
+    align-self: flex-start;
+    margin-left: 80px;
+    cursor: pointer;
+}
+.formSide .logo img{
+    width: 70px; 
+    height: 70px;
+    border-radius: 50%;
+}
+.formSide .icons{
+    color: var(--secondaryColor);
+    font-size: 30px;
+    display: flex;
+    gap: 20px;
+}
+.formSide .emailInput{
+   
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.formSide .passwordInput{
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.formSide input{
+    width: 400px;
+    height: 60px;
+    outline: none;
+    border: none;
+    background-color: #CCCD214F;
+    border-radius: 10px;
+    padding: 0  0 0 60px;
+    
+}
+.formSide .form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.formSide .form .icon{
+    position: absolute;
+    left: 20px;
+}
+
+/* ================== welocme side ================== */
+.welcomeSide{
+    width: 40%;
+    background-image: url('/images/signinBg.png');
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.welcomeSide .heading{
+    height: 60%;
+    display: flex;
+    align-items: center;
+}
+.welcomeSide .signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.welcomeSide .signup p{
+    color: #ffffff;
+}
+.welcomeSide .signup button{
+    width: fit-content;
+}
+#forgotPassword{
+    text-decoration: underline;
+    cursor: pointer;
+}
