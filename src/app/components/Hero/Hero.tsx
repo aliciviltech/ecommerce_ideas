@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { coverImages } from '@/utils/HeroCoverImages';
+import { url } from 'inspector';
 
 const Hero = () => {
     const settings = {
@@ -19,10 +20,10 @@ const Hero = () => {
     <div className='Hero'>
 <Slider {...settings}>
           {
-            coverImages.map((img)=>{
+            coverImages.map((img, index)=>{ 
               return (
-              <div className="coverImage">
-                <img src={`${img.src}`} alt="" />
+              <div key={index} className="coverImage" style={{backgroundImage:`url(${img.src})`  }}>
+                {/* <img src={`${img.src}`} alt="" /> */}
               </div>   
               ) 
             })

@@ -9,6 +9,7 @@ import Hero from './components/Hero/Hero';
 import Card from './components/Card/Card';
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from './firebase/firebaseConfig'
 import { db, addDoc, collection, getDocs } from './firebase/firebaseConfig'
+import CartContext from './components/context/cart/CartContext';
 
 const Home = () => {
   interface userData {
@@ -59,12 +60,12 @@ const Home = () => {
 
 
   return (
-
+    <CartContext>
     <div className="Home">
 
       {/* Header */}
       <div ref={headerRef} className="headerContainer">
-        <Header itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} isUser={isUser} userData={userData} />
+        <Header />
       </div>
 
       {/* Hero */}
@@ -112,6 +113,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </CartContext>
   )
 }
 

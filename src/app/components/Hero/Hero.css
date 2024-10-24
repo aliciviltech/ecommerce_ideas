@@ -4,3 +4,21 @@
 .Hero .coverImage img{
     width: 100%;
 }
+
+@media screen and (max-width:600px) {
+    .Hero {
+        min-height: 100vh;
+    }
+    .Hero .coverImage{
+        width: 100%;
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+    .Hero .coverImage img{
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center;
+    }
+}

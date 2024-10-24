@@ -6,27 +6,46 @@ import { menSuit } from '@/utils/ProductsData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import Card from '../Card/Card';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 const BestSeller = ({ itemsInCart, setItemsInCart }:{ itemsInCart: any; setItemsInCart: Dispatch<SetStateAction<any>> }) => {
+  const [slidesToShow, setSlidesToShow] = useState(4);
+  const [innerWidth, setInnerWidth] = useState(0);
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow, 
     slidesToScroll: 1,
     autoplay:true,
     autoplaySpeed:2000,
   };
+  // const [sliderSettings, setSliderSettings] = useState(settings);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 430) {
+        setSlidesToShow(1);
+      } else if(window.innerWidth < 600){
+        setSlidesToShow(2);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className='BestSeller'>
       <h1 className='newArrivalHeading headingH2'>New Arrival</h1>
       <div className="products">
         <Slider {...settings}>
           {
-            menSuit.map((suit) => {
+            menSuit.map((suit, index) => {
               return (
-                <div className='productCard'>
+                <div key={index} className='productCard'>
                   <div className="image">
                     <img src={suit.colors[0].colorImage} alt="" />
                     <div className="viewDetails" >

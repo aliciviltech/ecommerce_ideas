@@ -2,25 +2,24 @@
 import Cart from '../Cart/Cart'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen, faCartShopping, faCoins, faLocationDot, faRotate } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBookOpen, faCartShopping, faClose, faCoins, faHamburger, faLocationDot, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
+import { CartContextValue } from '../context/cart/CartContext';
 
-interface userData {
-    email:string|null
-  } 
 
-const Header = ({ itemsInCart, setItemsInCart, isUser , userData}: { itemsInCart: any; setItemsInCart: Dispatch<SetStateAction<any>>; isUser:boolean; userData:userData|null }) => {
-    
-    console.log(itemsInCart);
+
+const Header = () => {
+    const { isUser, userData, cartItems, addItems } = useContext(CartContextValue)
+    const [showMenu, setShowMenu] = useState(false);
     
     return (
         <div className="Header">
             <div className="row1">
                 <div className="logo"><img src="/images/ideas_logo.png" alt="" /></div>
                 <div className="nav">
-                    <ul>
+                    <ul className='flex-wrap gap-x-10 gap-y-4 justify-center'>
                         <li> <FontAwesomeIcon className='icon' icon={faCoins} /> Ideas Rewards</li>
                         <li><FontAwesomeIcon className='icon' icon={faRotate} /> Return & Exchanges</li>
                         <li><FontAwesomeIcon className='icon' icon={faRotate} /> Track Order</li>
@@ -34,7 +33,7 @@ const Header = ({ itemsInCart, setItemsInCart, isUser , userData}: { itemsInCart
                         :
                         <FontAwesomeIcon icon={faUser} />
                     }
-                    <Cart itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} cartColor={'white'}/>
+                    <Cart  cartColor={'white'}/>
                     |
                     <select id="currencySelector">
                         <option value="usd"> PKR</option>
@@ -48,12 +47,12 @@ const Header = ({ itemsInCart, setItemsInCart, isUser , userData}: { itemsInCart
             </div>
 
             {/* =============== row-2============== */}
-            <div className="row2">
+            <div className="row2 gap-5 flex-wrap:wrap">
                 <div className="storeLocation">
                     Store<FontAwesomeIcon className='icon' icon={faLocationDot} />
                 </div>
                 <div className="nav">
-                    <ul>
+                    <ul className={`${!showMenu && "hide"} flex-wrap gap-x-10 gap-y-4`}>
                         <li>Limited Edition</li>
                         <li>Lawn 2024</li>
                         <li>Unstitched</li>
@@ -65,6 +64,13 @@ const Header = ({ itemsInCart, setItemsInCart, isUser , userData}: { itemsInCart
                         <li>Bags</li>
                         <li>Kids</li>
                     </ul>
+                </div>
+                <div className="menuBars" onClick={()=>{setShowMenu(!showMenu)}}>
+                    {!showMenu ? 
+                    <FontAwesomeIcon className='icon' icon={faBars} />
+                    :
+                    <FontAwesomeIcon className='icon' icon={faClose} />
+                    }
                 </div>
             </div>
         </div>

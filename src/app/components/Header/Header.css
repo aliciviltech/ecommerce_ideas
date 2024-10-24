@@ -4,13 +4,14 @@
     /* height: 60px; */
     padding:  20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     gap: 10px;
     /* box-shadow: 0 0 4px gray;  */
     color:#fff;
     font-weight: 300;
     transition: 0.3s;
     background: linear-gradient(to top, transparent, #00000082);
+    position: relative;
 }
 .Header:hover{
     background-color: #000;
@@ -75,8 +76,43 @@
 .Header .row2 .nav ul{
     list-style-type: none;
     display: flex;
-    gap: 50px;
 }
 .Header .row2 .nav ul li{
     cursor: pointer;
+}
+.Header .row2 .menuBars{
+    margin-right: 20px;
+    display: none;
+}
+@media screen and (max-width: 1024px) {
+    .Header .row1 .nav ul{
+        display: none;
+    }
+    .Header .row2 .nav ul{
+        width: 200px;
+        position: absolute;
+        top: 140px;
+        right: 0;
+        background-color: #000;
+        flex-direction: column;
+        padding: 20px;
+        /* display: none; */
+    }
+    .Header .row2 .nav .hide{
+        display: none;
+    }
+    .Header .row2 .menuBars{
+        display: block;
+    }
+}
+@media screen and (max-width: 600px){
+    
+    .Header .row1{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .Header .row2 .nav ul{
+        top: 210px;
+    }
+
 }

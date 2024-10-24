@@ -25,7 +25,6 @@ const Card = ({ itemsInCart, setItemsInCart, suit, cardSize }: { itemsInCart: an
       }
     })
   }, [])
-  console.log(suit.colors)
 
   // ---------------- firestore -----------------
   const addItemF = async () => {
@@ -49,7 +48,6 @@ const Card = ({ itemsInCart, setItemsInCart, suit, cardSize }: { itemsInCart: an
       }
       return null;
     }).filter(item => item !== null);
-    console.log(arr);
     setItemsInCart(arr);
   }
 
@@ -80,7 +78,7 @@ const Card = ({ itemsInCart, setItemsInCart, suit, cardSize }: { itemsInCart: an
         </p>
       </div>
       {
-        showModal && <ProductModal suit={suit} showModal={showModal} setShowModal={setShowModal} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} userUID={userUID} />
+        showModal && <ProductModal suit={suit} showModal={showModal} setShowModal={setShowModal} />
       }
     </div>
   )
